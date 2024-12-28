@@ -17,11 +17,11 @@
         position: absolute;
         width: 8px;
         height: 8px;
-        background-color: #fff;
+        background-color: #faacac;
         border-radius: 50%;
         opacity: 0.8;
         pointer-events: none;
-        animation: fade 1s forwards;
+        animation: fade 5s forwards;
       }
 
       @keyframes fade {
@@ -34,7 +34,6 @@
   </head>
   <body>
     <script>
-      const insect = document.querySelector(".insect")
       let mouseX = 0,
         mouseY = 0
       let currentX = window.innerWidth / 2,
@@ -44,8 +43,6 @@
       document.addEventListener("mousemove", (e) => {
         mouseX = e.clientX
         mouseY = e.clientY
-
-        // Create trail effect
         const trail = document.createElement("div")
         trail.className = "trail"
         trail.style.left = `${mouseX}px`
@@ -53,12 +50,10 @@
         document.body.appendChild(trail)
 
         // Remove trail after animation
-        setTimeout(() => trail.remove(), 1000)
+        setTimeout(() => trail.remove(), 5000)
       })
 
-      // Smooth animation for insect to follow the cursor
       function animate() {
-      
         requestAnimationFrame(animate)
       }
 
