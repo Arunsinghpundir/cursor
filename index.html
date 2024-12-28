@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insect Follows Cursor Smoothly</title>
+    <title>Insect Follows Cursor on Touch</title>
     <style>
       body {
         margin: 0;
@@ -34,28 +34,27 @@
   </head>
   <body>
     <script>
-      let mouseX = 0,
-        mouseY = 0
-      let currentX = window.innerWidth / 2,
-        currentY = window.innerHeight / 2
-
-      // Update cursor position on mousemove
-      document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX
-        mouseY = e.clientY
-        const trail = document.createElement("div")
-        trail.className = "trail"
-        trail.style.left = `${mouseX}px`
-        trail.style.top = `${mouseY}px`
-        document.body.appendChild(trail)
+      const createTrail = (x, y) => {
+        const trail = document.createElement("div");
+        trail.className = "trail";
+        trail.style.left = `${x}px`;
+        trail.style.top = `${y}px`;
+        document.body.appendChild(trail);
 
         // Remove trail after animation
-        setTimeout(() => trail.remove(), 5000)
-      })
+        setTimeout(() => trail.remove(), 5000);
+      };
 
-    
+      // Mouse movement
+      document.addEventListener("mousemove", (e) => {
+        createTrail(e.clientX, e.clientY);
+      });
 
-      animate()
+      // Touch movement
+      document.addEventListener("touchmove", (e) => {
+        const touch = e.touches[0];
+        createTrail(touch.clientX, touch.clientY);
+      });
     </script>
   </body>
 </html>
