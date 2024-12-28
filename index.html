@@ -13,17 +13,6 @@
         cursor: none; /* Hide default cursor */
       }
 
-      .insect {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        background: url("https://cdn-icons-png.flaticon.com/512/616/616554.png")
-          no-repeat center / contain;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        filter: drop-shadow(0 0 5px #fff);
-      }
-
       .trail {
         position: absolute;
         width: 8px;
@@ -44,7 +33,6 @@
     </style>
   </head>
   <body>
-    <div class="insect"></div>
     <script>
       const insect = document.querySelector(".insect")
       let mouseX = 0,
@@ -70,12 +58,7 @@
 
       // Smooth animation for insect to follow the cursor
       function animate() {
-        const speed = 0.1 // Adjust speed
-        currentX += (mouseX - currentX) * speed
-        currentY += (mouseY - currentY) * speed
-
-        insect.style.transform = `translate(${currentX}px, ${currentY}px)`
-
+      
         requestAnimationFrame(animate)
       }
 
